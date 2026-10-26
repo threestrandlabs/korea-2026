@@ -470,6 +470,21 @@
       '</div>';
   }
 
+  function renderContingency(c) {
+    if (!c) return '';
+    return '' +
+      '<details class="planb">' +
+      '<summary>🔀 Plan B</summary>' +
+      '<div class="planb-body">' +
+      '<p><b>If this happens:</b> ' + esc(c.if_this_happens) + '</p>' +
+      '<p><b>Contingency 1:</b> ' + esc(c.contingency_1) + '</p>' +
+      (c.contingency_1_caution ? '<p class="planb-caution">⚠️ ' + esc(c.contingency_1_caution) + '</p>' : '') +
+      '<p><b>Contingency 2:</b> ' + esc(c.contingency_2) + '</p>' +
+      (c.easy_onward ? '<p><b>Easy onward?</b> ' + esc(c.easy_onward) + '</p>' : '') +
+      '</div>' +
+      '</details>';
+  }
+
   function renderStop(s, i, isLast) {
     var info = typeInfo(s.type);
     return '' +
@@ -487,6 +502,7 @@
       (s.vs_singapore ? '<span class="vs">vs Singapore: ' + esc(s.vs_singapore) + '</span>' : '') +
       '</div>' +
       (s.booking_note ? '<span class="bnote">' + esc(s.booking_note) + '</span>' : '') +
+      renderContingency(s.contingency) +
       '</div>' +
       '</div>';
   }
@@ -518,6 +534,7 @@
       '</div>' +
       dayHeroPhotoHtml(day) +
       (day.note ? '<div class="daynote">' + esc(day.note) + '</div>' : '') +
+      (day.time_sensitive ? '<div class="daynote daytimesensitive">⏰ Time-sensitive: ' + esc(day.time_sensitive) + '</div>' : '') +
       '<div class="daytotal">Day total<b>' + esc(totalText) + '</b>' + (total.count ? 'estimate from priced stops' : '') + '</div>' +
       '<div class="navrow">' +
       (prev ? '<a class="btn" href="#' + prev.id + '">← Day ' + prev.day + '</a>' : '') +

@@ -226,7 +226,13 @@
       {
        "key": "icnarr"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Long immigration / bags delay",
+      "contingency_1": "Stay on AREX Express, exit at Seoul Station, short taxi (about 5 min) to hotel",
+      "contingency_2": "Drop bags at hotel later; eat convenience-store ramyun near the station",
+      "easy_onward": "Still ends at hotel"
+     }
     },
     {
      "time": "19:15",
@@ -247,7 +253,8 @@
       {
        "key": "arex"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "20:10",
@@ -268,7 +275,8 @@
       {
        "key": "seoulstn"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "20:30",
@@ -282,7 +290,8 @@
      "vs_singapore": null,
      "booking_status": "Not booked",
      "booking_note": "Seoul hotel TBD; scrapbook uses voco Seoul Myeongdong as provisional base",
-     "photos": []
+     "photos": [],
+     "contingency": null
     },
     {
      "time": "21:00",
@@ -299,7 +308,13 @@
      "vs_singapore": "about the same (+4%) than same Nongshim cup at FairPrice S$1.53",
      "booking_status": "No booking needed",
      "booking_note": null,
-     "photos": []
+     "photos": [],
+     "contingency": {
+      "if_this_happens": "Very late arrival",
+      "contingency_1": "Skip any evening activity; go straight to bed",
+      "contingency_2": "Order delivery via host (KakaoTalk) if the hotel allows",
+      "easy_onward": "Hotel is the base"
+     }
     }
    ],
    "map_pins": [
@@ -378,7 +393,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EC%84%9C%EC%9A%B8%EC%97%AD,37.55285,126.97257/to/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99,37.55844,126.97858",
      "naver_url": "https://map.naver.com/p/search/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99"
     }
-   ]
+   ],
+   "time_sensitive": "Flight landing time + hotel check-in window."
   },
   {
    "day": 2,
@@ -416,7 +432,8 @@
       {
        "key": "hanbok"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "10:00–12:30",
@@ -440,7 +457,14 @@
       {
        "key": "guard"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Gyeongbokgung crowded / cold / closed",
+      "contingency_1": "Changdeokgung (nearby) — walk or short subway",
+      "contingency_1_caution": "Changdeokgung is closed Mondays — and Day 2 is a Monday, so check it is actually open before heading over.",
+      "contingency_2": "Skip the palace → go straight to Bukchon then Insadong (same area, walkable)",
+      "easy_onward": "Yes — central Line 1/3/4/5"
+     }
     },
     {
      "time": "12:30",
@@ -457,7 +481,8 @@
      "vs_singapore": "23% pricier than SG bibimbap S$6.90–11.90",
      "booking_status": "No booking needed",
      "booking_note": null,
-     "photos": []
+     "photos": [],
+     "contingency": null
     },
     {
      "time": "13:30–15:00",
@@ -475,7 +500,8 @@
       {
        "key": "bukchon"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "15:00–17:00",
@@ -499,7 +525,8 @@
       {
        "key": "insadong"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "17:00–18:30",
@@ -517,7 +544,8 @@
       {
        "key": "gwanghwamun"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "18:30–19:30",
@@ -535,7 +563,8 @@
       {
        "key": "lantern"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "19:30–21:00",
@@ -559,7 +588,13 @@
       {
        "key": "bindaetteok"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Gwangjang too crowded",
+      "contingency_1": "Namdaemun Market (easy Line 4 from central) for similar food + shopping",
+      "contingency_2": "Stay in Ikseon-dong / Insadong for cafés + crafts; move dinner closer to hotel",
+      "easy_onward": "Yes"
+     }
     }
    ],
    "map_pins": [
@@ -770,7 +805,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5,37.57019,126.9995/to/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99,37.55844,126.97858",
      "naver_url": "https://map.naver.com/p/search/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99"
     }
-   ]
+   ],
+   "time_sensitive": "Gyeongbokgung closed Tuesdays (your day is Monday — OK). Lantern festival hours TBC."
   },
   {
    "day": 3,
@@ -805,7 +841,8 @@
       {
        "key": "seongsu"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "12:30",
@@ -826,7 +863,13 @@
       {
        "key": "kalguksu_b"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Seongsu crowded or Ramura unavailable",
+      "contingency_1": "Stay on Line 2 → continue to Jamsil / Lotte World Mall",
+      "contingency_2": "Skip to Seoul Forest only, then Express Bus Terminal / Goto Mall",
+      "easy_onward": "Yes — Line 2 or one change"
+     }
     },
     {
      "time": "14:00–15:30",
@@ -844,7 +887,8 @@
       {
        "key": "seoulforest_c"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "16:00–18:30",
@@ -862,7 +906,13 @@
       {
        "key": "gotomall"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Goto Mall too crowded",
+      "contingency_1": "COEX / Starfield Library (Line 2 to Samseong)",
+      "contingency_2": "Back to Myeongdong / Dongdaemun for shopping",
+      "easy_onward": "Yes"
+     }
     },
     {
      "time": "19:00",
@@ -883,7 +933,8 @@
       {
        "key": "kbbq"
       }
-     ]
+     ],
+     "contingency": null
     }
    ],
    "map_pins": [
@@ -1001,7 +1052,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EA%B3%A0%ED%88%AC%EB%AA%B0,37.50504,127.00492/to/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99,37.55844,126.97858",
      "naver_url": "https://map.naver.com/p/search/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99"
     }
-   ]
+   ],
+   "time_sensitive": "Ramura needs CatchTable booking."
   },
   {
    "day": 4,
@@ -1036,7 +1088,8 @@
       {
        "key": "yongsan_b"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "9:00",
@@ -1057,7 +1110,8 @@
       {
        "key": "gapyeong"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "10:15",
@@ -1078,7 +1132,8 @@
       {
        "key": "ferry"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "10:30–14:30",
@@ -1096,7 +1151,13 @@
       {
        "key": "nami_b"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Nami closed / bad weather / sold out",
+      "contingency_1": "Elysian Gangchon ski/snow day (same ITX direction)",
+      "contingency_2": "Skip the island → return early and do Dongdaemun / DDP + jjimjilbang",
+      "easy_onward": "Same return train"
+     }
     },
     {
      "time": "15:00",
@@ -1114,7 +1175,8 @@
       {
        "key": "gapyeong"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "18:00–21:00",
@@ -1135,7 +1197,13 @@
       {
        "key": "jjimjil_b"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Jjimjilbang too late or full",
+      "contingency_1": "Other spa near Dongdaemun or Myeongdong",
+      "contingency_2": "Hotel bath / early night",
+      "easy_onward": "Easy back to hotel"
+     }
     }
    ],
    "map_pins": [
@@ -1280,7 +1348,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EC%8A%A4%ED%8C%8C%EB%A0%89%EC%8A%A4%20%EB%8F%99%EB%8C%80%EB%AC%B8%EC%A0%90,37.56672,127.00754/to/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99,37.55844,126.97858",
      "naver_url": "https://map.naver.com/p/search/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99"
     }
-   ]
+   ],
+   "time_sensitive": "ITX booking required, ferry 08:00–21:00. Snow alternative already noted (Elysian Gangchon)."
   },
   {
    "day": 5,
@@ -1321,7 +1390,8 @@
       {
        "key": "tteokbokki"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "13:00–14:30",
@@ -1342,7 +1412,8 @@
       {
        "key": "yeonnam"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "14:30–16:00",
@@ -1360,7 +1431,13 @@
       {
        "key": "hongdae"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Hongdae too crowded",
+      "contingency_1": "Stay longer in Yeonnam-dong (walkable) then go to The Hyundai Seoul (Line 2 + 9)",
+      "contingency_2": "Skip to Yeouido Hangang Park earlier for ramyun + walk",
+      "easy_onward": "Yes — Line 2 / 9 / AREX"
+     }
     },
     {
      "time": "16:30–18:00",
@@ -1378,7 +1455,13 @@
       {
        "key": "hyundai"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Hyundai / park too cold",
+      "contingency_1": "Stay in Hongdae for indoor cafés / shops",
+      "contingency_2": "Return to Myeongdong for indoor shopping",
+      "easy_onward": "Yes"
+     }
     },
     {
      "time": "18:00–19:00",
@@ -1396,7 +1479,8 @@
       {
        "key": "yeouido"
       }
-     ]
+     ],
+     "contingency": null
     }
    ],
    "map_pins": [
@@ -1571,7 +1655,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EC%97%AC%EC%9D%98%EB%8F%84%ED%95%9C%EA%B0%95%EA%B3%B5%EC%9B%90,37.52567,126.93606/to/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99,37.55844,126.97858",
      "naver_url": "https://map.naver.com/p/search/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99"
     }
-   ]
+   ],
+   "time_sensitive": null
   },
   {
    "day": 6,
@@ -1606,7 +1691,13 @@
       {
        "key": "starfield"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "COEX too crowded",
+      "contingency_1": "Skip to Jamsil / Lotte World Mall direct on Line 2",
+      "contingency_2": "Do Starfield Library only then leave",
+      "easy_onward": "Yes — Line 2"
+     }
     },
     {
      "time": "12:30",
@@ -1620,7 +1711,8 @@
      "vs_singapore": null,
      "booking_status": "No booking needed",
      "booking_note": null,
-     "photos": []
+     "photos": [],
+     "contingency": null
     },
     {
      "time": "13:30–17:30",
@@ -1641,7 +1733,13 @@
       {
        "key": "lwtower"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Theme park / tower sold out or long queues",
+      "contingency_1": "Lotte World Mall shopping only",
+      "contingency_2": "Move farewell BBQ to Myeongdong (Wangbijib) or Hongdae area",
+      "easy_onward": "Yes"
+     }
     },
     {
      "time": "19:00–20:45",
@@ -1662,7 +1760,8 @@
       {
        "key": "myeongdong"
       }
-     ]
+     ],
+     "contingency": null
     }
    ],
    "map_pins": [
@@ -1779,7 +1878,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EC%99%95%EB%B9%84%EC%A7%91%20%EB%AA%85%EB%8F%99%EB%B3%B8%EC%A0%90,37.5611,126.9856/to/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99,37.55844,126.97858",
      "naver_url": "https://map.naver.com/p/search/%EB%B3%B4%EC%BD%94%20%EC%84%9C%EC%9A%B8%20%EB%AA%85%EB%8F%99"
     }
-   ]
+   ],
+   "time_sensitive": "Lotte World / Seoul Sky tickets."
   },
   {
    "day": 7,
@@ -1814,7 +1914,8 @@
       {
        "key": "seoulstn"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "9:00",
@@ -1835,7 +1936,13 @@
       {
        "key": "ktx"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "KTX delayed",
+      "contingency_1": "Next available KTX (book flexible if possible)",
+      "contingency_2": "Drop bags and do Nampo area later",
+      "easy_onward": "Still Busan base"
+     }
     },
     {
      "time": "12:00",
@@ -1853,7 +1960,8 @@
       {
        "key": "seomyeon"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "13:00–14:30",
@@ -1874,7 +1982,13 @@
       {
        "key": "jagalchi"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Jagalchi / Gukje crowded or closed",
+      "contingency_1": "Stay in Seomyeon for markets / food",
+      "contingency_2": "Head earlier to Gwangalli for the drone show (Line 2)",
+      "easy_onward": "Yes — Busan Line 1/2"
+     }
     },
     {
      "time": "14:30–15:15",
@@ -1898,7 +2012,8 @@
       {
        "key": "hotteok"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "15:15–17:00",
@@ -1916,7 +2031,13 @@
       {
        "key": "gukje"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Jagalchi / Gukje crowded or closed",
+      "contingency_1": "Stay in Seomyeon for markets / food",
+      "contingency_2": "Head earlier to Gwangalli for the drone show (Line 2)",
+      "easy_onward": "Yes — Busan Line 1/2"
+     }
     },
     {
      "time": "19:00",
@@ -1934,7 +2055,13 @@
       {
        "key": "gwangan"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Drone cancelled",
+      "contingency_1": "Gwangalli Beach lights / food stalls",
+      "contingency_2": "Seomyeon night market / cafés",
+      "easy_onward": "Yes"
+     }
     }
    ],
    "map_pins": [
@@ -2121,7 +2248,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EA%B4%91%EC%95%88%EB%A6%AC%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5,35.15089,129.11678/to/%EB%B6%80%EC%82%B0%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%ED%98%B8%ED%85%94,35.1578,129.0573",
      "naver_url": "https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%ED%98%B8%ED%85%94"
     }
-   ]
+   ],
+   "time_sensitive": "KTX (Saturday trains fill — book early). Drone show 19:00 & 21:00 Saturdays only (weather can cancel). Gukje Market closed Sundays."
   },
   {
    "day": 8,
@@ -2156,7 +2284,13 @@
       {
        "key": "gamcheon"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Gamcheon too crowded / steep",
+      "contingency_1": "Skip and do Seomyeon food + rest earlier",
+      "contingency_2": "Go straight to Haeundae (Line 2)",
+      "easy_onward": "Yes — Line 2"
+     }
     },
     {
      "time": "13:00",
@@ -2177,7 +2311,8 @@
       {
        "key": "gukbap_b"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "14:30",
@@ -2191,7 +2326,8 @@
      "vs_singapore": null,
      "booking_status": "Not booked",
      "booking_note": null,
-     "photos": []
+     "photos": [],
+     "contingency": null
     },
     {
      "time": "16:00–17:30",
@@ -2209,7 +2345,13 @@
       {
        "key": "haeundae"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Haeundae lights / beach too cold or crowded",
+      "contingency_1": "Haeundae Traditional Market only",
+      "contingency_2": "Stay in Seomyeon for indoor dinner",
+      "easy_onward": "Yes"
+     }
     },
     {
      "time": "17:30–19:30",
@@ -2223,7 +2365,13 @@
      "vs_singapore": null,
      "booking_status": "No booking needed",
      "booking_note": "Hours TBC",
-     "photos": []
+     "photos": [],
+     "contingency": {
+      "if_this_happens": "Haeundae lights / beach too cold or crowded",
+      "contingency_1": "Haeundae Traditional Market only",
+      "contingency_2": "Stay in Seomyeon for indoor dinner",
+      "easy_onward": "Yes"
+     }
     }
    ],
    "map_pins": [
@@ -2339,7 +2487,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%ED%95%B4%EC%9A%B4%EB%8C%80%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5,35.15929,129.15861/to/%EB%B6%80%EC%82%B0%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%ED%98%B8%ED%85%94,35.1578,129.0573",
      "naver_url": "https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%ED%98%B8%ED%85%94"
     }
-   ]
+   ],
+   "time_sensitive": null
   },
   {
    "day": 9,
@@ -2374,7 +2523,13 @@
       {
        "key": "yonggungsa"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Temple too crowded / stairs hard",
+      "contingency_1": "Skip and go straight to Blueline Park / sky capsule",
+      "contingency_2": "Head early to Spa Land / Shinsegae Centum City",
+      "easy_onward": "Mostly Line 2 + short bus/taxi"
+     }
     },
     {
      "time": "13:00–14:00",
@@ -2395,7 +2550,13 @@
       {
        "key": "blueline"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "Sky capsule sold out or cancelled",
+      "contingency_1": "Haeundae Beach + market",
+      "contingency_2": "Spa Land longer",
+      "easy_onward": "Yes"
+     }
     },
     {
      "time": "14:30–18:30",
@@ -2416,7 +2577,8 @@
       {
        "key": "centum"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "19:15",
@@ -2437,7 +2599,8 @@
       {
        "key": "milmyeon_b"
       }
-     ]
+     ],
+     "contingency": null
     }
    ],
    "map_pins": [
@@ -2606,7 +2769,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EC%8B%A0%EC%84%B8%EA%B3%84%20%EC%84%BC%ED%85%80%EC%8B%9C%ED%8B%B0%20%EC%8A%A4%ED%8C%8C%EB%9E%9C%EB%93%9C,35.1689,129.1295/to/%EB%B6%80%EC%82%B0%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%ED%98%B8%ED%85%94,35.1578,129.0573",
      "naver_url": "https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4%ED%98%B8%ED%85%94"
     }
-   ]
+   ],
+   "time_sensitive": "Spa Land last entry 21:00."
   },
   {
    "day": 10,
@@ -2641,7 +2805,8 @@
       {
        "key": "busanstn"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "10:30",
@@ -2662,7 +2827,13 @@
       {
        "key": "ktx"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "KTX delayed",
+      "contingency_1": "Next train and skip snack haul",
+      "contingency_2": "Taxi from Seoul Station if needed for check-in window",
+      "easy_onward": "Still airport"
+     }
     },
     {
      "time": "13:15",
@@ -2680,7 +2851,13 @@
       {
        "key": "seoulstn"
       }
-     ]
+     ],
+     "contingency": {
+      "if_this_happens": "City Airport Terminal not available for your flight",
+      "contingency_1": "Normal check-in at Incheon (leave earlier)",
+      "contingency_2": "Skip Lotte Mart snacks",
+      "easy_onward": "Keep 3+ hours before flight"
+     }
     },
     {
      "time": "13:45–14:40",
@@ -2697,7 +2874,8 @@
      "vs_singapore": null,
      "booking_status": "No booking needed",
      "booking_note": "Lotte Mart Zettaplex Seoul Station, 10:00–24:00",
-     "photos": []
+     "photos": [],
+     "contingency": null
     },
     {
      "time": "14:50",
@@ -2718,7 +2896,8 @@
       {
        "key": "arex"
       }
-     ]
+     ],
+     "contingency": null
     },
     {
      "time": "18:35",
@@ -2736,7 +2915,8 @@
       {
        "key": "icn2"
       }
-     ]
+     ],
+     "contingency": null
     }
    ],
    "map_pins": [
@@ -2830,7 +3010,8 @@
      "kakao_url": "https://map.kakao.com/link/from/%EC%84%9C%EC%9A%B8%EC%97%AD,37.55285,126.97257/to/%EC%9D%B8%EC%B2%9C%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%A0%9C2%EC%97%AC%EA%B0%9D%ED%84%B0%EB%AF%B8%EB%84%90,37.46804,126.43486",
      "naver_url": "https://map.naver.com/p/search/%EC%9D%B8%EC%B2%9C%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%A0%9C2%EC%97%AC%EA%B0%9D%ED%84%B0%EB%AF%B8%EB%84%90"
     }
-   ]
+   ],
+   "time_sensitive": "KTX timing (latest ~11:30 for 18:35 flight). City Airport Terminal check-in by 15:15. AREX Express."
   }
  ],
  "phrases": [

@@ -162,6 +162,7 @@ body { background: #FFF6E8; }
 .dh-main h2 { font-family: 'Jua', 'Nunito', sans-serif; font-weight: 400; font-size: 22px; line-height: 1.1; }
 .dh-main p { font-size: 13px; font-weight: 700; color: var(--muted); }
 .daynote { font-size: 13px; font-weight: 700; padding: 8px 12px; border: 2px dashed var(--line); border-radius: 14px; background: var(--card2); }
+.daytimesensitive { border-color: var(--accent); }
 .daytotal { padding: 8px 14px; border: 2.5px dashed var(--line); border-radius: 14px; background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 13px; text-align: center; line-height: 1.2; }
 .daytotal b { display: block; font-family: 'Jua', 'Nunito', sans-serif; font-weight: 400; font-size: 18px; }
 .navrow { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
@@ -183,6 +184,16 @@ body { background: #FFF6E8; }
 .vs { font-size: 11.5px; font-weight: 700; color: var(--muted); font-style: italic; }
 .bnote { font-size: 12px; font-weight: 700; color: var(--muted); }
 .restaurant { font-size: 13px; font-weight: 800; }
+
+.planb { margin-top: 2px; border: 2px dashed var(--line); border-radius: 14px; background: var(--card2); overflow: hidden; }
+.planb summary { cursor: pointer; padding: 8px 12px; font-size: 13px; font-weight: 800; color: var(--ink); list-style: none; min-height: 28px; display: flex; align-items: center; }
+.planb summary::-webkit-details-marker { display: none; }
+.planb summary::marker { content: ''; }
+.planb[open] summary { border-bottom: 2px dashed var(--line); }
+.planb-body { padding: 8px 12px 10px; display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--ink); }
+.planb-body p { margin: 0; }
+.planb-body b { font-weight: 800; }
+.planb-caution { color: var(--muted); font-style: italic; }
 
 .dirhead { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; flex-wrap: wrap; }
 .dirlabel { width: 26px; height: 26px; border-radius: 50%; border: 2.5px solid var(--line); background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: 'Jua', 'Nunito', sans-serif; font-size: 13px; flex: none; }
