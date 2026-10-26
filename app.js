@@ -61,6 +61,73 @@
     return '<span class="badge ' + badgeClass(status) + '">' + esc(text) + '</span>';
   }
 
+  // ---------- photos ----------
+  function photoLib(key) {
+    return DATA.photo_library && DATA.photo_library[key];
+  }
+
+  function photoCreditHtml(p) {
+    return '<figcaption class="photo-credit">Photo: <a href="' + esc(p.source_url) + '" target="_blank" rel="noopener">' +
+      esc(p.author) + '</a> · <a href="' + esc(p.licence_url) + '" target="_blank" rel="noopener">' + esc(p.licence) + '</a></figcaption>';
+  }
+
+  function photoFigure(key, cls) {
+    var p = photoLib(key);
+    if (!p) return '';
+    return '' +
+      '<figure class="photo' + (cls ? ' ' + cls : '') + '">' +
+      '<button type="button" class="photo-btn" data-action="open-lightbox" data-key="' + esc(key) + '" aria-label="View full-size photo: ' + esc(p.caption) + '">' +
+      '<img src="' + esc(p.src_800) + '" srcset="' + esc(p.src_800) + ' 800w, ' + esc(p.src_1800) + ' 1800w" ' +
+      'sizes="(min-width: 900px) 420px, 92vw" width="' + p.w_800 + '" height="' + p.h_800 + '" ' +
+      'loading="lazy" decoding="async" alt="' + esc(p.caption) + '">' +
+      '</button>' +
+      photoCreditHtml(p) +
+      '</figure>';
+  }
+
+  function stopPhotosHtml(stop) {
+    var photos = stop.photos || [];
+    if (!photos.length) return '';
+    var figs = photos.map(function (ph) { return photoFigure(ph.key); }).join('');
+    return '<div class="photogrid pg-' + photos.length + '">' + figs + '</div>';
+  }
+
+  function dayHeroPhotoHtml(day) {
+    if (!day.hero_photo || !day.hero_photo.key) return '';
+    var p = photoLib(day.hero_photo.key);
+    if (!p) return '';
+    return '' +
+      '<figure class="photo dayhero-photo">' +
+      '<button type="button" class="photo-btn" data-action="open-lightbox" data-key="' + esc(day.hero_photo.key) + '" aria-label="View full-size photo: ' + esc(p.caption) + '">' +
+      '<img src="' + esc(p.src_800) + '" srcset="' + esc(p.src_800) + ' 800w, ' + esc(p.src_1800) + ' 1800w" ' +
+      'sizes="(min-width: 900px) 760px, 94vw" width="' + p.w_800 + '" height="' + p.h_800 + '" ' +
+      'loading="lazy" decoding="async" alt="' + esc(p.caption) + '">' +
+      '</button>' +
+      photoCreditHtml(p) +
+      '</figure>';
+  }
+
+  function renderPhotoCredits() {
+    var lib = DATA.photo_library || {};
+    var keys = Object.keys(lib);
+    if (!keys.length) return '';
+    var items = keys.map(function (key) {
+      var p = lib[key];
+      return '' +
+        '<li class="credititem">' +
+        '<span class="cc-cap">' + esc(p.caption) + '</span>' +
+        '<span class="cc-meta">' + esc(p.author) + ' · <a href="' + esc(p.licence_url) + '" target="_blank" rel="noopener">' + esc(p.licence) + '</a> · ' +
+        '<a href="' + esc(p.source_url) + '" target="_blank" rel="noopener">Source ↗</a></span>' +
+        '</li>';
+    }).join('');
+    return '' +
+      '<section class="card sec">' +
+      '<h2>📷 Photo credits</h2>' +
+      '<p class="note">All photos are freely licensed, sourced from Wikimedia Commons.</p>' +
+      '<ul class="creditlist">' + items + '</ul>' +
+      '</section>';
+  }
+
   function emptyState(title, text, charIdx) {
     var img = CHAR_IMAGES[((charIdx % CHAR_IMAGES.length) + CHAR_IMAGES.length) % CHAR_IMAGES.length];
     return '' +
@@ -380,7 +447,7 @@
 
   // ---------- overview page ----------
   function renderOverview() {
-    return renderCaveats() + renderSummary() + renderFlights() + renderHotels() + renderBoard() + renderPhrases();
+    return renderCaveats() + renderSummary() + renderFlights() + renderHotels() + renderBoard() + renderPhrases() + renderPhotoCredits();
   }
 
   // ---------- day view ----------
@@ -412,6 +479,7 @@
       '<div class="tcard">' +
       '<div class="trow"><span class="node sm ' + info.cls + '" aria-hidden="true">' + (s.emoji || '') + '</span><h4>' + esc(s.place) + '</h4>' + badgeHtml(s.booking_status) + '</div>' +
       (s.restaurant ? '<span class="restaurant">🍽️ ' + esc(s.restaurant) + '</span>' : '') +
+      stopPhotosHtml(s) +
       (s.description ? '<p class="note">' + esc(s.description) + '</p>' : '') +
       '<div class="trow2">' +
       '<span class="tag ' + info.cls + '">' + esc(info.label) + '</span>' +
@@ -448,6 +516,7 @@
       '<p>' + esc(day.weekday) + ' ' + esc(day.date_label) + ' · ' + esc(day.city) + ' · ' + esc(day.area || '') + ' · ' + day.stops.length + ' stops</p>' +
       '<p>' + esc(day.walking || '') + (day.walking && day.rides ? ' · ' : '') + esc(day.rides || '') + '</p>' +
       '</div>' +
+      dayHeroPhotoHtml(day) +
       (day.note ? '<div class="daynote">' + esc(day.note) + '</div>' : '') +
       '<div class="daytotal">Day total<b>' + esc(totalText) + '</b>' + (total.count ? 'estimate from priced stops' : '') + '</div>' +
       '<div class="navrow">' +
@@ -493,10 +562,54 @@
 
     var app = document.getElementById('app');
     app.className = 'kp p-' + state.pal + ' m-' + state.mode;
+    document.body.className = 'p-' + state.pal + ' m-' + state.mode;
 
     var main = state.tab === 'overview' ? renderOverview() : renderDay(currentDay());
 
     app.innerHTML = '<div class="wrap">' + renderHeader() + renderTabs() + main + renderFooter() + '</div>';
+  }
+
+  // ---------- lightbox ----------
+  var lightboxEl = null;
+  var lightboxLastFocus = null;
+
+  function setupLightbox() {
+    lightboxEl = document.createElement('div');
+    lightboxEl.className = 'lightbox';
+    lightboxEl.hidden = true;
+    lightboxEl.innerHTML = '' +
+      '<div class="lightbox-backdrop" data-action="close-lightbox"></div>' +
+      '<div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Photo">' +
+      '<button type="button" class="lightbox-close" data-action="close-lightbox" aria-label="Close photo">✕</button>' +
+      '<img class="lightbox-img" alt="">' +
+      '<div class="lightbox-caption"></div>' +
+      '</div>';
+    document.body.appendChild(lightboxEl);
+  }
+
+  function openLightbox(key) {
+    var p = photoLib(key);
+    if (!p || !lightboxEl) return;
+    lightboxLastFocus = document.activeElement;
+    var img = lightboxEl.querySelector('.lightbox-img');
+    img.src = p.src_1800;
+    img.width = p.w_1800;
+    img.height = p.h_1800;
+    img.alt = p.caption || '';
+    var cap = lightboxEl.querySelector('.lightbox-caption');
+    cap.innerHTML = esc(p.caption) + ' — Photo: <a href="' + esc(p.source_url) + '" target="_blank" rel="noopener">' +
+      esc(p.author) + '</a> · <a href="' + esc(p.licence_url) + '" target="_blank" rel="noopener">' + esc(p.licence) + '</a>';
+    lightboxEl.hidden = false;
+    document.body.classList.add('lb-open');
+    lightboxEl.querySelector('.lightbox-close').focus();
+  }
+
+  function closeLightbox() {
+    if (!lightboxEl || lightboxEl.hidden) return;
+    lightboxEl.hidden = true;
+    document.body.classList.remove('lb-open');
+    if (lightboxLastFocus && lightboxLastFocus.focus) lightboxLastFocus.focus();
+    lightboxLastFocus = null;
   }
 
   document.addEventListener('click', function (e) {
@@ -515,10 +628,20 @@
       var f = btn.getAttribute('data-filter');
       state.filter = (f === 'all' || state.filter === f) ? 'all' : f;
       render();
+    } else if (action === 'open-lightbox') {
+      openLightbox(btn.getAttribute('data-key'));
+    } else if (action === 'close-lightbox') {
+      closeLightbox();
     }
   });
 
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightboxEl && !lightboxEl.hidden) closeLightbox();
+  });
+
   window.addEventListener('hashchange', render);
+
+  setupLightbox();
 
   loadTheme();
   fetch('data.json')
