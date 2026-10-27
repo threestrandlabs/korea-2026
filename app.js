@@ -92,19 +92,69 @@
     return '<div class="photogrid pg-' + photos.length + '">' + figs + '</div>';
   }
 
-  function dayHeroPhotoHtml(day) {
-    if (!day.hero_photo || !day.hero_photo.key) return '';
-    var p = photoLib(day.hero_photo.key);
+  function heroPhotoHtml(heroPhoto) {
+    if (!heroPhoto || !heroPhoto.key) return '';
+    var p = photoLib(heroPhoto.key);
     if (!p) return '';
     return '' +
       '<figure class="photo dayhero-photo">' +
-      '<button type="button" class="photo-btn" data-action="open-lightbox" data-key="' + esc(day.hero_photo.key) + '" aria-label="View full-size photo: ' + esc(p.caption) + '">' +
+      '<button type="button" class="photo-btn" data-action="open-lightbox" data-key="' + esc(heroPhoto.key) + '" aria-label="View full-size photo: ' + esc(p.caption) + '">' +
       '<img src="' + esc(p.src_800) + '" srcset="' + esc(p.src_800) + ' 800w, ' + esc(p.src_1800) + ' 1800w" ' +
       'sizes="(min-width: 900px) 760px, 94vw" width="' + p.w_800 + '" height="' + p.h_800 + '" ' +
       'loading="lazy" decoding="async" alt="' + esc(p.caption) + '">' +
       '</button>' +
       photoCreditHtml(p) +
       '</figure>';
+  }
+
+  function dayHeroPhotoHtml(day) {
+    return heroPhotoHtml(day.hero_photo);
+  }
+
+  // ---------- maps ----------
+  function mapFigure(mapObj, altText, cls) {
+    if (!mapObj || !mapObj.src) return '';
+    var srcset = mapObj.src_800 ?
+      (esc(mapObj.src_800) + ' 800w, ' + esc(mapObj.src) + ' ' + mapObj.w + 'w') : '';
+    return '' +
+      '<figure class="mapfig' + (cls ? ' ' + cls : '') + '">' +
+      '<button type="button" class="map-btn" data-action="open-map-lightbox" ' +
+      'data-src="' + esc(mapObj.src) + '" data-w="' + mapObj.w + '" data-h="' + mapObj.h + '" data-alt="' + esc(altText) + '" ' +
+      'aria-label="View full-size map: ' + esc(altText) + '">' +
+      '<img src="' + esc(mapObj.src_800 || mapObj.src) + '" ' +
+      (srcset ? 'srcset="' + srcset + '" sizes="(min-width: 900px) 760px, 94vw" ' : '') +
+      'width="' + mapObj.w + '" height="' + mapObj.h + '" loading="lazy" decoding="async" alt="' + esc(altText) + '">' +
+      '</button>' +
+      '<figcaption class="map-credit">🗺️ ' + esc(altText) + ' · © OpenStreetMap contributors</figcaption>' +
+      '</figure>';
+  }
+
+  function pinKakaoUrl(p) {
+    return 'https://map.kakao.com/link/map/' + encodeURIComponent(p.name_ko || p.name) + ',' + p.lat + ',' + p.lng;
+  }
+  function pinNaverUrl(p) {
+    return 'https://map.naver.com/p/search/' + encodeURIComponent(p.name_ko || p.name);
+  }
+
+  function renderPinList(pins) {
+    if (!pins || !pins.length) return '';
+    var items = pins.map(function (p) {
+      var dayChips = (p.days || []).map(function (dd) {
+        return '<span class="daychip">' + esc(dd) + '</span>';
+      }).join('');
+      var onMap = p.on_map === 'region' ? '<span class="onmap">on region map</span>' : '';
+      return '' +
+        '<li class="pinitem">' +
+        '<span class="pinno">' + esc(p.no) + '</span>' +
+        '<span class="pinnames"><b>' + esc(p.name) + '</b><span class="pinko">' + esc(p.name_ko || '') + '</span></span>' +
+        '<span class="pindays">' + dayChips + onMap + '</span>' +
+        '<span class="pinlinks">' +
+        '<a class="pinlink" href="' + esc(pinKakaoUrl(p)) + '" target="_blank" rel="noopener">Kakao</a>' +
+        '<a class="pinlink" href="' + esc(pinNaverUrl(p)) + '" target="_blank" rel="noopener">Naver</a>' +
+        '</span>' +
+        '</li>';
+    }).join('');
+    return '<ul class="pinlist">' + items + '</ul>';
   }
 
   function renderPhotoCredits() {
@@ -360,6 +410,35 @@
       '</section>';
   }
 
+  // ---------- overview: all places ----------
+  function renderAllPlaces() {
+    var ap = DATA.overview && DATA.overview.all_places;
+    if (!ap) return '';
+    var seoul = ap.seoul, busan = ap.busan;
+    var seoulMaps = '' +
+      '<div class="mapsrow">' +
+      mapFigure(seoul.map_image, 'Seoul · all places') +
+      mapFigure(seoul.region_map_image, 'Seoul region · out-of-town places (airport, rail park, Everland)') +
+      '</div>';
+    var busanMaps = '<div class="mapsrow">' + mapFigure(busan.map_image, 'Busan · all places') + '</div>';
+    return '' +
+      '<section class="card sec">' +
+      '<h2>🗺️ All places</h2>' +
+      '<div class="placesblock">' +
+      '<h3>Seoul</h3>' +
+      (seoul.note ? '<p class="note">' + esc(seoul.note) + '</p>' : '') +
+      seoulMaps +
+      renderPinList(seoul.pins) +
+      '</div>' +
+      '<div class="placesblock">' +
+      '<h3>Busan</h3>' +
+      (busan.note ? '<p class="note">' + esc(busan.note) + '</p>' : '') +
+      busanMaps +
+      renderPinList(busan.pins) +
+      '</div>' +
+      '</section>';
+  }
+
   // ---------- overview: day-map board ----------
   function renderBoard() {
     var rate = DATA.meta.exchange_rate.krw_per_sgd;
@@ -447,7 +526,7 @@
 
   // ---------- overview page ----------
   function renderOverview() {
-    return renderCaveats() + renderSummary() + renderFlights() + renderHotels() + renderBoard() + renderPhrases() + renderPhotoCredits();
+    return renderCaveats() + renderSummary() + renderFlights() + renderHotels() + renderAllPlaces() + renderBoard() + renderPhrases() + renderPhotoCredits();
   }
 
   // ---------- day view ----------
@@ -535,6 +614,7 @@
       dayHeroPhotoHtml(day) +
       (day.note ? '<div class="daynote">' + esc(day.note) + '</div>' : '') +
       (day.time_sensitive ? '<div class="daynote daytimesensitive">⏰ Time-sensitive: ' + esc(day.time_sensitive) + '</div>' : '') +
+      (day.changes_2026_10_27 ? '<div class="daynote daychangenote">🔄 Updated 27 Oct 2026: ' + esc(day.changes_2026_10_27) + '</div>' : '') +
       '<div class="daytotal">Day total<b>' + esc(totalText) + '</b>' + (total.count ? 'estimate from priced stops' : '') + '</div>' +
       '<div class="navrow">' +
       (prev ? '<a class="btn" href="#' + prev.id + '">← Day ' + prev.day + '</a>' : '') +
@@ -548,7 +628,44 @@
       '</section>' +
       '<section class="card dircard">' +
       '<h3>Getting around</h3>' +
+      mapFigure(day.map_image, 'Day ' + day.day + ' map') +
       '<div>' + dirsHtml + '</div>' +
+      '</section>' +
+      renderPlanB(day.plan_b);
+  }
+
+  // ---------- day view: Plan B (alternative whole-day plan) ----------
+  function renderPlanB(pb) {
+    if (!pb) return '';
+    var stopsHtml = (pb.stops && pb.stops.length) ?
+      pb.stops.map(function (s, i) { return renderStop(s, i, i === pb.stops.length - 1); }).join('') :
+      '';
+    var dirsHtml = (pb.directions && pb.directions.length) ? pb.directions.map(renderDirection).join('') : '';
+    var subline = [pb.area, pb.walking, pb.rides].filter(Boolean).map(esc).join(' · ');
+    var extraLists = '' +
+      (pb.other_ways_to_get_there && pb.other_ways_to_get_there.length ?
+        '<div class="othernote"><b>Other ways there:</b><ul>' +
+        pb.other_ways_to_get_there.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') +
+        '</ul></div>' : '') +
+      (pb.notes && pb.notes.length ?
+        '<div class="othernote"><ul>' + pb.notes.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></div>' : '');
+    return '' +
+      '<section class="card planbday">' +
+      '<div class="planbday-badge">🔀 ' + esc(pb.label) + ' — pick one for the day</div>' +
+      '<h2 class="planbday-title">' + esc(pb.title) + '</h2>' +
+      (pb.summary ? '<p class="note">' + esc(pb.summary) + '</p>' : '') +
+      (subline ? '<p class="note">' + subline + '</p>' : '') +
+      heroPhotoHtml(pb.hero_photo) +
+      '</section>' +
+      '<section class="card tlcard planbtl">' +
+      '<h3>Plan B timeline</h3>' +
+      '<div>' + stopsHtml + '</div>' +
+      '</section>' +
+      '<section class="card dircard planbdir">' +
+      '<h3>Plan B: getting around</h3>' +
+      mapFigure(pb.map_image, pb.label + ' map') +
+      '<div>' + dirsHtml + '</div>' +
+      extraLists +
       '</section>';
   }
 
@@ -621,6 +738,21 @@
     lightboxEl.querySelector('.lightbox-close').focus();
   }
 
+  function openMapLightbox(src, w, h, alt) {
+    if (!src || !lightboxEl) return;
+    lightboxLastFocus = document.activeElement;
+    var img = lightboxEl.querySelector('.lightbox-img');
+    img.src = src;
+    img.width = w;
+    img.height = h;
+    img.alt = alt || '';
+    var cap = lightboxEl.querySelector('.lightbox-caption');
+    cap.textContent = (alt || '') + ' — © OpenStreetMap contributors';
+    lightboxEl.hidden = false;
+    document.body.classList.add('lb-open');
+    lightboxEl.querySelector('.lightbox-close').focus();
+  }
+
   function closeLightbox() {
     if (!lightboxEl || lightboxEl.hidden) return;
     lightboxEl.hidden = true;
@@ -647,6 +779,8 @@
       render();
     } else if (action === 'open-lightbox') {
       openLightbox(btn.getAttribute('data-key'));
+    } else if (action === 'open-map-lightbox') {
+      openMapLightbox(btn.getAttribute('data-src'), btn.getAttribute('data-w'), btn.getAttribute('data-h'), btn.getAttribute('data-alt'));
     } else if (action === 'close-lightbox') {
       closeLightbox();
     }

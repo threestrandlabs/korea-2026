@@ -236,6 +236,38 @@ body { background: #FFF6E8; }
 .cc-meta { color: var(--muted); font-weight: 700; }
 .cc-meta a { color: inherit; text-decoration: underline; }
 
+/* ===== maps ===== */
+.mapsrow { display: flex; flex-wrap: wrap; gap: 10px; margin: 2px 0; }
+.mapfig { margin: 0; flex: 1 1 280px; max-width: 760px; display: flex; flex-direction: column; gap: 4px; }
+.map-btn { display: block; width: 100%; padding: 6px; margin: 0; border: 2px solid var(--line); border-radius: 14px; background: #F7F4EC; box-shadow: 0 3px 0 var(--shadow); cursor: zoom-in; line-height: 0; }
+.map-btn:active { transform: translateY(2px); box-shadow: none; }
+.map-btn img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.map-credit { margin: 0; font-size: 10.5px; font-weight: 700; color: var(--muted); line-height: 1.3; }
+.daymapwrap { margin-bottom: 4px; }
+
+.placesblock { display: flex; flex-direction: column; gap: 10px; }
+.placesblock + .placesblock { margin-top: 6px; padding-top: 14px; border-top: 2px dashed var(--line); }
+
+.pinlist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.pinitem { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 7px 10px; border: 2px solid var(--line); border-radius: 12px; background: var(--card2); font-size: 12.5px; }
+.pinno { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); border: 2px solid var(--line); display: grid; place-items: center; font-family: 'Jua', 'Nunito', sans-serif; font-size: 12px; }
+.pinnames { display: flex; flex-direction: column; flex: 1 1 160px; min-width: 0; line-height: 1.25; }
+.pinnames b { font-weight: 800; }
+.pinko { font-size: 11px; font-weight: 700; color: var(--muted); }
+.pindays { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.daychip { font-size: 10px; font-weight: 800; padding: 1px 8px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); color: var(--muted); white-space: nowrap; }
+.onmap { font-size: 10px; font-weight: 700; color: var(--muted); font-style: italic; }
+.pinlinks { display: flex; gap: 6px; margin-left: auto; }
+.pinlink { font-size: 11px; font-weight: 800; text-decoration: underline; white-space: nowrap; }
+
+/* ===== Day 4 Plan B (alternative whole-day plan) ===== */
+.planbday { padding: 14px; display: flex; flex-direction: column; gap: 8px; border-color: var(--accent); border-width: 3px; background: var(--card2); }
+.planbday-badge { align-self: flex-start; padding: 3px 12px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-size: 12px; font-weight: 800; }
+.planbday-title { font-family: 'Jua', 'Nunito', sans-serif; font-weight: 400; font-size: 20px; line-height: 1.15; }
+.planbtl, .planbdir { border-color: var(--accent); border-width: 3px; }
+.othernote { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.othernote ul { margin: 4px 0 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+
 /* ===== lightbox ===== */
 .lightbox { position: fixed; inset: 0; z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
 .lightbox[hidden] { display: none; }
